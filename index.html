@@ -1,1 +1,86 @@
-Hello World
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- env -->
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="language" content="Korean">
+    <meta http-equiv="content-language" content="KO">
+    <!--[if lte IE 10 ]>
+    <link href="//polyfill.io/normalize.css" rel="stylesheet">
+    <script src="//polyfill.io"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+    <link rel="stylesheet" href="game.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="content">
+        <header>
+            <div id="score">
+                <span class="score"></span>점
+            </div>
+            <div id="timer">
+                <div id="clock"><span id="time">10</span></div>
+                <progress></progress>
+            </div>
+        </header>
+        <div id="map">
+            <div id="tiles">
+                <div class="tile">
+
+                </div>
+                <div class="tile">
+
+                </div>
+                <div class="tile">
+
+                </div>
+                <div class="tile">
+
+                </div>
+            </div>
+            <div class="panel" id="end">
+                <div class="dialog">
+                    <h1>종료!</h1>
+                    <p><strong class="score"></strong>점 획득!</p>
+                    <button type="button" class="start">한번 더!</button>
+                    <div class="fb-like" data-href="http://colortile.github.io/" data-width="300" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+            </div>
+            <div class="panel" id="start">
+                <div class="dialog">
+                    <h1>틀린 타일 찾기!</h1>
+                    <button type="button" class="start">시작!</button>
+                    <div class="fb-like" data-href="http://colortile.github.io/" data-width="300" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- colortile -->
+    <div id="ad">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- colortile -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2105274835750141"
+             data-ad-slot="4318557319"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div>
+<script src="game.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=651362471645618&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
