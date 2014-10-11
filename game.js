@@ -15,7 +15,7 @@ var conf = {
     size: {start: 3, end: 8, current: 3},
     tiles: {selector: '#tiles', width: 320, margin: 5, content: undefined},
     gap: {min: 5, current: 50},
-    time: {max: 10, current: 0},
+    time: {max: 60, current: 0},
     score: 0,
     debug: true
 };
