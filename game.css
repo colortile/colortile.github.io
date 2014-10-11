@@ -109,10 +109,11 @@ div#tiles {
   font-size: 1.3em;
 }
 .panel .dialog button.start {
+  display: block;
   font-size: 1em;
   height: 3.5em;
   width: 3.5em;
-  margin: 10px 0 1em 0;
+  margin: 10px auto 1em auto;
   background: #e65100;
   color: #ffffff;
   font-size: 1.5em;
