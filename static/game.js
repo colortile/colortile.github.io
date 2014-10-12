@@ -97,7 +97,7 @@ function render(level, size) {
     }
 
     // init
-    var tile_width = (conf.tiles.width - (conf.tiles.margin * size)) / size;
+    var tile_width = Math.floor((conf.tiles.width - conf.tiles.margin * size) / size);
     var tile_count = size * size;
     set_gap_current();
     var base_color = {r: rnd255(), g: rnd255(), b: rnd255()};
