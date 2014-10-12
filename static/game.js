@@ -210,12 +210,12 @@ $('#kakaostory-share').on('click', executeKakaoStoryLink);
 
 function executeKakaoStoryLink() {
     kakao.link("story").send({
-        post: "http://colortile.github.io/",
+        post: "틀린 타일 찾기! " + get_share_desc() + " - http://colortile.github.io/",
         appid: "colortile.github.io",
         appver: "1.0",
         appname: "틀린 타일 찾기",
         urlinfo: JSON.stringify({
-            title: get_share_desc(),
+            title: "틀린 타일 찾기",
             desc: "틀린 타일을 찾아 당신의 색감을 확인해보세요.",
             imageurl: ["http://colortile.github.io/static/images/apple-touch-icon-144x144.png"],
             type: "website"})
