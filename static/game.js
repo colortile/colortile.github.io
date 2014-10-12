@@ -19,6 +19,7 @@ var conf = {
     score: 0,
     debug: false,
     title: [
+        "색감 도전자",
         "색감 노예",
         "색감 거지",
         "색감 평민",
@@ -46,16 +47,16 @@ function init() {
 }
 
 function get_title(score) {
-    var title = '색감 도전자';
+    var title = conf.title[0];
     var score = parseInt(score);
-    if (score >= 10 ) title = conf.title[0];
-    if (score >= 20 ) title = conf.title[1];
-    if (score >= 30 ) title = conf.title[2];
-    if (score >= 40 ) title = conf.title[3];
-    if (score >= 50 ) title = conf.title[4];
-    if (score >= 60 ) title = conf.title[5];
-    if (score >= 70 ) title = conf.title[6];
-    if (score >= 80 ) title = conf.title[7];
+    if (score >= 10) title = conf.title[1];
+    if (score >= 20) title = conf.title[2];
+    if (score >= 30) title = conf.title[3];
+    if (score >= 40) title = conf.title[4];
+    if (score >= 50) title = conf.title[5];
+    if (score >= 60) title = conf.title[6];
+    if (score >= 70) title = conf.title[7];
+    if (score >= 80) title = conf.title[8];
     return title;
 }
 
@@ -146,9 +147,18 @@ var stage = new function () {
 
 init();
 
+function get_share_desc() {
+    return conf.score + '점 획득! 당신은 색감 ' + get_title(conf.score) + '!!'
+}
+
 var game = new function () {
+    var $meta_desc = $('meta[name="description"]');
+    console.log($meta_desc);
     function reset() {
         log('game reset');
+        if ($meta_desc.data('content') != undefined) {
+            $meta_desc.attr('content', $meta_desc.data('content'));
+        }
         $('#start').show();
         $('#end').hide();
         init();
@@ -163,6 +173,8 @@ var game = new function () {
         timer.start();
     };
     this.end = function () {
+        $meta_desc.data('content', $meta_desc.attr('content'));
+        $meta_desc.attr('content', get_share_desc())
         log('game end');
         $('#end').show();
     };
@@ -194,3 +206,18 @@ var timer = new function () {
     };
 };
 
+$('#kakaostory-share').on('click', executeKakaoStoryLink);
+
+function executeKakaoStoryLink() {
+    kakao.link("story").send({
+        post: "http://colortile.github.io/",
+        appid: "colortile.github.io",
+        appver: "1.0",
+        appname: "틀린 타일 찾기!",
+        urlinfo: JSON.stringify({
+            title: "틀린 타일 찾기!",
+            desc: get_share_desc(),
+            imageurl: ["http://colortile.github.io/static/images/apple-touch-icon-144x144.png"],
+            type: "website"})
+    });
+}

@@ -138,6 +138,11 @@ div#tiles {
 }
 .panel .dialog p strong {
   font-size: 1.3em;
+  color: #e65100;
+}
+.panel .dialog p span.title {
+  font-size: 1.3em;
+  color: #e65100;
 }
 .panel .dialog button.start {
   display: block;
@@ -151,4 +156,20 @@ div#tiles {
   border: none;
   border-radius: 3px;
   box-shadow: 1px 1px 3px #bdbdbd;
+}
+#kakaostory-share {
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  margin: 0 auto 10px auto;
+  padding: 0px 15px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px #bdbdbd;
+  font-size: 15px;
+  color: #393939;
+  background: #fff000;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -1px;
 }
