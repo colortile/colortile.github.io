@@ -153,7 +153,6 @@ function get_share_desc() {
 
 var game = new function () {
     var $meta_desc = $('meta[name="description"]');
-    console.log($meta_desc);
     function reset() {
         log('game reset');
         if ($meta_desc.data('content') != undefined) {
