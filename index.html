@@ -8,7 +8,7 @@
     <meta name="language" content="Korean">
     <meta http-equiv="content-language" content="KO">
     <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="statis/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="static/images/favicon.ico" type="image/x-icon">
     <title>틀린 타일 찾기</title>
     <meta name="description" content="틀린 타일을 찾아보세요!"/>
     <!-- og -->
@@ -18,6 +18,16 @@
     <meta property="og:image"
           content="static/images/tiny.png"/>
     <meta property="og:url" content="http://colortile.github.io/"/>
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="static/images/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="static/images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="static/images/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="static/images/apple-touch-icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="static/images/apple-touch-icon-60x60.png"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="static/images/apple-touch-icon-120x120.png"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="static/images/apple-touch-icon-76x76.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="static/images/apple-touch-icon-152x152.png"/>
     <!-- ms -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="application-name" content="틀린 타일 찾기"/>
@@ -65,16 +75,19 @@
             <div class="panel" id="end">
                 <div class="dialog">
                     <h1>종료!</h1>
+
                     <p><strong class="score"></strong>점 획득!</p>
                     <button type="button" class="start">한번 더!</button>
-                    <div class="fb-like" data-href="http://colortile.github.io/" data-width="300" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                    <div class="fb-like" data-href="http://colortile.github.io/" data-width="300" data-layout="standard"
+                         data-action="like" data-show-faces="true" data-share="true"></div>
                 </div>
             </div>
             <div class="panel" id="start">
                 <div class="dialog">
                     <h1>틀린 타일 찾기!</h1>
                     <button type="button" class="start">시작!</button>
-                    <div class="fb-like" data-href="http://colortile.github.io/" data-width="300" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                    <div class="fb-like" data-href="http://colortile.github.io/" data-width="300" data-layout="standard"
+                         data-action="like" data-show-faces="true" data-share="true"></div>
                 </div>
             </div>
         </div>
@@ -95,21 +108,29 @@
 </div>
 <script src="static/game.js"></script>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=651362471645618&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=651362471645618&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-32829704-6', 'auto');
-  ga('send', 'pageview');
+    ga('create', 'UA-32829704-6', 'auto');
+    ga('send', 'pageview');
 
 </script>
 </body>
