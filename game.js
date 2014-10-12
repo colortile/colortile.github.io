@@ -74,7 +74,7 @@ function render(level, size) {
     set_gap_current();
     var base_color = {r: rnd255(), g: rnd255(), b: rnd255()};
     var anwser_color = {r: plus_gap(base_color.r), g: plus_gap(base_color.g), b: plus_gap(base_color.b)};
-    var anwser_index = Math.floor(Math.random() * tile_count) + 1;
+    var anwser_index = Math.floor(Math.random() * tile_count);
     log('answer index : ' + anwser_index);
     log('tile_count : ' + tile_count);
 
@@ -89,7 +89,7 @@ function render(level, size) {
         height: tile_width + 'px',
         backgroundColor: parse_color(base_color)
     });
-    $('.tile:nth-child(' + anwser_index + ')')
+    $('.tile').eq(anwser_index)
         .css("background-color", parse_color(anwser_color))
         .addClass('answer');
 
