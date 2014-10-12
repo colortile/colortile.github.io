@@ -83,12 +83,29 @@ function render(level, size) {
         return Math.floor(Math.random() * (255 - conf.level.end * 2)) + conf.level.end;
     }
 
-    function plus_gap(color) {
-        return parseInt(color + conf.gap.current);
+    function randomColor() {
+        var r = rnd255();
+        var g = rnd255();
+        var b = rnd255();
+        var gap = conf.gap.current;
+        var baseColor, answerColor;
+
+        if (Math.random() > 0.5) {
+            // The answer is brighter than the base color.
+            baseColor = toColor(r, g, b);
+            answerColor = toColor(r + gap, g + gap, b + gap);
+        } else {
+            answerColor = toColor(r, g, b);
+            baseColor = toColor(r + gap, g + gap, b + gap);
+        }
+
+        return {base: baseColor, answer: answerColor};
     }
 
-    function parse_color(rgb_color) {
-        return "#" + rgb_color.r.toString(16) + rgb_color.g.toString(16) + rgb_color.b.toString(16)
+    function toColor(r, g, b) {
+        var color = "rgb(" + r + "," + g + "," + b + ")";
+        console.log(color);
+        return color;
     }
 
     function set_gap_current() {
@@ -100,9 +117,8 @@ function render(level, size) {
     var tile_width = Math.floor((conf.tiles.width - conf.tiles.margin * size) / size);
     var tile_count = size * size;
     set_gap_current();
-    var base_color = {r: rnd255(), g: rnd255(), b: rnd255()};
-    var answer_color = {r: plus_gap(base_color.r), g: plus_gap(base_color.g), b: plus_gap(base_color.b)};
-    var answer_index = Math.floor(Math.random() * tile_count);
+    var colors = randomColor();
+    var anwser_index = Math.floor(Math.random() * tile_count);
 
     // draw
     conf.tiles.content.find('.answer').removeClass('answer');
@@ -113,10 +129,10 @@ function render(level, size) {
     $('.tile').css({
         width: tile_width + 'px',
         height: tile_width + 'px',
-        backgroundColor: parse_color(base_color)
+        backgroundColor: colors.base
     });
-    $('.tile').eq(answer_index)
-        .css("background-color", parse_color(answer_color))
+    $('.tile').eq(anwser_index)
+        .css("background-color", colors.answer)
         .addClass('answer');
 }
 
