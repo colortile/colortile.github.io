@@ -101,8 +101,8 @@ function render(level, size) {
     var tile_count = size * size;
     set_gap_current();
     var base_color = {r: rnd255(), g: rnd255(), b: rnd255()};
-    var anwser_color = {r: plus_gap(base_color.r), g: plus_gap(base_color.g), b: plus_gap(base_color.b)};
-    var anwser_index = Math.floor(Math.random() * tile_count);
+    var answer_color = {r: plus_gap(base_color.r), g: plus_gap(base_color.g), b: plus_gap(base_color.b)};
+    var answer_index = Math.floor(Math.random() * tile_count);
 
     // draw
     conf.tiles.content.find('.answer').removeClass('answer');
@@ -115,8 +115,8 @@ function render(level, size) {
         height: tile_width + 'px',
         backgroundColor: parse_color(base_color)
     });
-    $('.tile').eq(anwser_index)
-        .css("background-color", parse_color(anwser_color))
+    $('.tile').eq(answer_index)
+        .css("background-color", parse_color(answer_color))
         .addClass('answer');
 }
 
