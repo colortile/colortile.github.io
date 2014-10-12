@@ -35,7 +35,7 @@ header {
       float: left;
       display: block;
       border: 5px solid #bf360c;
-      background: #000000;
+      background: #263238;
       color: #ffffff;
       border-radius: 0 0 10px 0;
       width: 2em;
@@ -50,8 +50,34 @@ header {
       width: 55%;
       margin-top: 10px;
       height: 30px;
-      border-radius: 0 5px 5px 0;
+      border: 0;
+      border-left:none;
+      border-radius: 0 3px 3px 0;
+      background-color: #bdbdbd;
     }
+    progress:not([value]) {
+      background-color: #bdbdbd;
+      border-radius: 0 3px 3px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+    progress[value] {
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0 3px 3px 0;
+      height: 30px;
+    }
+    progress::-moz-progress-bar {
+      border-radius: 0 3px 3px 0;
+      background-color: #259b24;
+    }
+    progress::-webkit-progress-bar {
+      background-color: #bdbdbd;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+    progress::-webkit-progress-value {
+      background-color: #259b24;
+    }
+
   }
 }
 
@@ -76,6 +102,7 @@ div.tile {
 }
 
 div#tiles {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: #f5f5f5;
   box-shadow: 0 0 3px #bdbdbd;
   margin: 0px auto 0 auto;
