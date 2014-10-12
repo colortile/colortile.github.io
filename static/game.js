@@ -27,7 +27,8 @@ var conf = {
         "색감 장인",
         "색감 기사",
         "색감 왕",
-        "색감 황제"
+        "색감 황제",
+        "색감 신"
     ]
 };
 
@@ -57,6 +58,7 @@ function get_title(score) {
     if (score >= 60) title = conf.title[6];
     if (score >= 70) title = conf.title[7];
     if (score >= 80) title = conf.title[8];
+    if (score >= 90) title = conf.title[9];
     return title;
 }
 
