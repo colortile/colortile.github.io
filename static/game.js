@@ -1,4 +1,4 @@
-$('body, body *').attr('unselectable', 'on')
+$('header, #tiles *').attr('unselectable', 'on')
     .css({'-moz-user-select': '-moz-none',
         '-moz-user-select': 'none',
         '-o-user-select': 'none',
