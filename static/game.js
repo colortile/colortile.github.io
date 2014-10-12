@@ -17,7 +17,17 @@ var conf = {
     gap: {min: 5, current: 50},
     time: {max: 60, current: 0},
     score: 0,
-    debug: true
+    debug: false,
+    title: [
+        "색감 노예",
+        "색감 거지",
+        "색감 평민",
+        "색감 상인",
+        "색감 장인",
+        "색감 기사",
+        "색감 왕",
+        "색감 황제"
+    ]
 };
 
 function init() {
@@ -35,6 +45,20 @@ function init() {
     update_status();
 }
 
+function get_title(score) {
+    var title = '색감 도전자';
+    var score = parseInt(score);
+    if (score >= 10 ) title = conf.title[0];
+    if (score >= 20 ) title = conf.title[1];
+    if (score >= 30 ) title = conf.title[2];
+    if (score >= 40 ) title = conf.title[3];
+    if (score >= 50 ) title = conf.title[4];
+    if (score >= 60 ) title = conf.title[5];
+    if (score >= 70 ) title = conf.title[6];
+    if (score >= 80 ) title = conf.title[7];
+    return title;
+}
+
 function update_status() {
     $('.score').text(conf.score);
     $('#time').text(conf.time.current);
@@ -42,6 +66,7 @@ function update_status() {
         value: conf.time.current,
         max: conf.time.max
     });
+    $('.title').text(get_title(conf.score));
 }
 
 // global functions
@@ -75,8 +100,6 @@ function render(level, size) {
     var base_color = {r: rnd255(), g: rnd255(), b: rnd255()};
     var anwser_color = {r: plus_gap(base_color.r), g: plus_gap(base_color.g), b: plus_gap(base_color.b)};
     var anwser_index = Math.floor(Math.random() * tile_count);
-    log('answer index : ' + anwser_index);
-    log('tile_count : ' + tile_count);
 
     // draw
     conf.tiles.content.find('.answer').removeClass('answer');
@@ -92,9 +115,6 @@ function render(level, size) {
     $('.tile').eq(anwser_index)
         .css("background-color", parse_color(anwser_color))
         .addClass('answer');
-
-    // debug
-    log(level + ' : ' + conf.gap.current);
 }
 
 

@@ -7,14 +7,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta name="language" content="Korean">
     <meta http-equiv="content-language" content="KO">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="statis/images/favicon.ico" type="image/x-icon">
+    <title>틀린 타일 찾기</title>
+    <meta name="description" content="틀린 타일을 찾아보세요!"/>
+    <!-- og -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="틀린 타일 찾기"/>
+    <meta property="og:title" content="틀린 타일 찾기"/>
+    <meta property="og:image"
+          content="static/images/tiny.png"/>
+    <meta property="og:url" content="http://colortile.github.io/"/>
+    <!-- ms -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="application-name" content="틀린 타일 찾기"/>
+    <meta name="msapplication-TileColor" content="#263238"/>
+    <meta name="msapplication-square70x70logo" content="static/images/tiny.png"/>
+    <meta name="msapplication-square150x150logo" content="static/images/square.png"/>
+    <meta name="msapplication-wide310x150logo" content="static/images/wide.png"/>
+    <meta name="msapplication-square310x310logo" content="static/images/large.png"/>
     <!--[if lte IE 10 ]>
     <link href="//polyfill.io/normalize.css" rel="stylesheet">
     <script src="//polyfill.io"></script>
     <![endif]-->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
-    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="static/game.css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
@@ -22,7 +39,8 @@
     <div id="content">
         <header>
             <div id="score">
-                <span class="score"></span>점
+                <span class="title"></span>
+                <span class="score"></span>
             </div>
             <div id="timer">
                 <div id="clock"><span id="time">10</span></div>
@@ -75,7 +93,7 @@
         </script>
     </div>
 </div>
-<script src="game.js"></script>
+<script src="static/game.js"></script>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];

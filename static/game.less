@@ -21,13 +21,18 @@ header {
   height: 50px;
   #score {
     float: right;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    font-size: 1em;
-    span {
-      font-size: 1.5em
+    span.title {
+      color:#757575;
+      font-size:1em;
+      display: inline-block;
+    }
+    span.score {
+      display: inline-block;
+      text-align: center;
+      line-height: 50px;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
     }
   }
   #timer {
@@ -47,7 +52,7 @@ header {
     progress {
       -webkit-appearance: none;
       appearance: none;
-      width: 55%;
+      width: 35%;
       margin-top: 10px;
       height: 30px;
       border: 0;
