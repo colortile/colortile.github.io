@@ -145,11 +145,12 @@ div#tiles {
   color: #e65100;
 }
 .panel .dialog button.start {
+  padding: 0;
   display: block;
   font-size: 1em;
   height: 3em;
-  width: 5em;
-  margin: 10px auto 1em auto;
+  width: 140px;
+  margin: 10px auto 10px auto;
   background: #e65100;
   color: #ffffff;
   font-size: 1.5em;
@@ -160,13 +161,13 @@ div#tiles {
 #kakaostory-share {
   cursor: pointer;
   display: inline-block;
-  height: 25px;
-  line-height: 25px;
+  height: 50px;
+  line-height: 50px;
   margin: 0 auto 10px auto;
-  padding: 0px 15px;
+  width: 140px;
   border-radius: 3px;
   box-shadow: 0 1px 1px #bdbdbd;
-  font-size: 15px;
+  font-size: 16px;
   color: #393939;
   background: #fff000;
   font-weight: 700;

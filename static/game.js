@@ -147,17 +147,10 @@ var stage = new function () {
 
 init();
 
-function get_share_desc() {
-    return conf.score + '점 획득! 당신은 색감 ' + get_title(conf.score) + '!!'
-}
 
 var game = new function () {
-    var $meta_desc = $('meta[name="description"]');
     function reset() {
         log('game reset');
-        if ($meta_desc.data('content') != undefined) {
-            $meta_desc.attr('content', $meta_desc.data('content'));
-        }
         $('#start').show();
         $('#end').hide();
         init();
@@ -172,8 +165,6 @@ var game = new function () {
         timer.start();
     };
     this.end = function () {
-        $meta_desc.data('content', $meta_desc.attr('content'));
-        $meta_desc.attr('content', get_share_desc())
         log('game end');
         $('#end').show();
     };
@@ -205,17 +196,23 @@ var timer = new function () {
     };
 };
 
+function get_share_desc() {
+    return conf.score + '점 획득! 당신은 ' + get_title(conf.score) + '!!'
+}
+
 $('#kakaostory-share').on('click', executeKakaoStoryLink);
 
 function executeKakaoStoryLink() {
+    var meta_desc = $('meta[name="description"]').attr('content');
+    var meta_title = $('meta[name="title"]').attr('content');
     kakao.link("story").send({
         post: "틀린 타일 찾기! " + get_share_desc() + " - http://colortile.github.io/",
         appid: "colortile.github.io",
         appver: "1.0",
-        appname: "틀린 타일 찾기",
+        appname: meta_title,
         urlinfo: JSON.stringify({
-            title: "틀린 타일 찾기",
-            desc: "틀린 타일을 찾아 당신의 색감을 확인해보세요.",
+            title: meta_title,
+            desc: meta_desc,
             imageurl: ["http://colortile.github.io/static/images/apple-touch-icon-144x144.png"],
             type: "website"})
     });
