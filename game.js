@@ -79,8 +79,9 @@ function render(level, size) {
     log('tile_count : ' + tile_count);
 
     // draw
-    conf.tiles.content.empty();
-    for (var i = 0; i < tile_count; i++) {
+    conf.tiles.content.find('.answer').removeClass('answer');
+    var current_tile = conf.tiles.content.find('.tile').size();
+    for (var i = current_tile; i < tile_count; i++) {
         conf.tiles.content.append('<div class="tile id_' + i + '"/>');
     }
     $('.tile').css({
