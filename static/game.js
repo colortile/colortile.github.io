@@ -1,3 +1,5 @@
+FastClick.attach(document.body);
+
 $('header, #tiles *').attr('unselectable', 'on')
     .css({'-moz-user-select': '-moz-none',
         '-moz-user-select': 'none',
@@ -19,16 +21,22 @@ var conf = {
     score: 0,
     debug: false,
     title: [
-        "색감 도전자",
-        "색감 노예",
-        "색감 거지",
-        "색감 평민",
-        "색감 상인",
-        "색감 장인",
-        "색감 기사",
-        "색감 왕",
-        "색감 황제",
-        "색감 신"
+        [0, "색감 도전자"],
+        [10, "색감 거지"],
+        [20, "색감 노예"],
+        [25, "색감 농노"],
+        [30, "색감 소작농"],
+        [35, "색감 평민"],
+        [40, "색감 상인"],
+        [45, "색감 장인"],
+        [50, "색감 명인"],
+        [55, "색감 명장"],
+        [60, "색감 거장"],
+        [65, "색감 기사"],
+        [70, "색감 왕"],
+        [75, "색감 대왕"],
+        [80, "색감 황제"],
+        [90, "색감 신"]
     ]
 };
 
@@ -43,33 +51,27 @@ function init() {
     conf.time.current = conf.time.max;
     conf.score = 0;
 
-    $('.panel').css({height: conf.tiles.width + 'px', width: conf.tiles.width + 'px'});
+    $('div.panel').css({height: conf.tiles.width + 'px', width: conf.tiles.width + 'px'});
     update_status();
 }
 
 function get_title(score) {
-    var title = conf.title[0];
+    var title = conf.title[0][1];
     var score = parseInt(score);
-    if (score >= 10) title = conf.title[1];
-    if (score >= 20) title = conf.title[2];
-    if (score >= 30) title = conf.title[3];
-    if (score >= 40) title = conf.title[4];
-    if (score >= 50) title = conf.title[5];
-    if (score >= 60) title = conf.title[6];
-    if (score >= 70) title = conf.title[7];
-    if (score >= 80) title = conf.title[8];
-    if (score >= 90) title = conf.title[9];
+    for (var idx in conf.title) {
+        if (score >= conf.title[idx][0]) title = conf.title[idx][1];
+    }
     return title;
 }
 
 function update_status() {
-    $('.score').text(conf.score);
+    $('strong.score, span.score').text(conf.score);
     $('#time').text(conf.time.current);
     $('#timer').find('progress').attr({
         value: conf.time.current,
         max: conf.time.max
     });
-    $('.title').text(get_title(conf.score));
+    $('span.title').text(get_title(conf.score));
 }
 
 // global functions
@@ -126,14 +128,14 @@ function render(level, size) {
     conf.tiles.content.find('.answer').removeClass('answer');
     var current_tile = conf.tiles.content.find('.tile').size();
     for (var i = current_tile; i < tile_count; i++) {
-        conf.tiles.content.append('<div class="tile id_' + i + '"/>');
+        conf.tiles.content.append('<div class="tile"/>');
     }
-    $('.tile').css({
+    $('#tiles > div.tile').css({
         width: tile_width + 'px',
         height: tile_width + 'px',
         backgroundColor: colors.base
     });
-    $('.tile').eq(anwser_index)
+    $('#tiles > div.tile').eq(anwser_index)
         .css("background-color", colors.answer)
         .addClass('answer');
 }
@@ -189,10 +191,10 @@ var game = new function () {
         $('#end').show();
     };
     this.reset = reset;
-    $('#tiles').on('click', 'div.tile', stage.tile_click);
+    $('#tiles').on('click touchstart', 'div.tile', stage.tile_click);
 };
 
-$('.panel').on('click', 'button.start', game.start);
+$('div.panel').on('click', 'button.start', game.start);
 $(window).resize(game.reset);
 
 var timer = new function () {
