@@ -175,7 +175,8 @@ div#tiles {
   letter-spacing: -1px;
 }
 div.hit {
-  position: absolute;
+  position: relative;
+  top: -12px;
   color: #ffffff;
   text-align: center;
   text-shadow: 0px 0px 3px #212121;

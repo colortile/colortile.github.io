@@ -27,8 +27,11 @@ var conf = {
         [20, "색감 노예"],
         [25, "색감 농노"],
         [30, "색감 소작농"],
-        [35, "색감 평민"],
-        [40, "색감 상인"],
+        [34, "색감 평민"],
+        [37, "색감 상인"],
+        [39, "색감 도매상"],
+        [41, "색감 사장"],
+        [43, "색감 거상"],
         [45, "색감 장인"],
         [50, "색감 명인"],
         [55, "색감 명장"],
@@ -180,12 +183,10 @@ var stage = new function () {
         }
         var position = element.position();
         effect.css({
-            left: (position.left) + 'px',
-            top: (position.top - 12) + 'px',
             width: element.width() + 'px',
             lineHeight: element.height() + 'px'
         });
-        $('#map').append(effect);
+        element.append(effect);
         effect.fadeOut(500, function () {
             $(this).remove();
         });
