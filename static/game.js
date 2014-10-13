@@ -19,7 +19,7 @@ var conf = {
     gap: {min: 10, current: 0},
     time: {max: 60, current: 0},
     score: 0,
-    combo: 0,
+    combo: {max: 0, current: 0},
     debug: false,
     title: [
         [0, "색감 도전자"],
@@ -47,10 +47,11 @@ function init() {
     conf.tiles.width = conf.tiles.content.width();
     conf.tiles.content.css('height', conf.tiles.width + 'px');
     conf.level.current = conf.level.start;
-    conf.combo = 0;
     conf.size.current = conf.size.start;
     conf.gap.current = conf.level.end;
     conf.time.current = conf.time.max;
+    conf.combo.max = 0;
+    conf.combo.current = 0;
     conf.score = 0;
 
     $('div.panel').css({height: conf.tiles.width + 'px', width: conf.tiles.width + 'px'});
@@ -74,7 +75,7 @@ function update_status() {
         max: conf.time.max
     });
     $('span.title').text(get_title(conf.score));
-    $('span.combo').text(conf.combo);
+    $('span.combo').text(conf.combo.max);
 }
 
 // global functions
@@ -146,8 +147,6 @@ function render(level, size) {
 
 var stage = new function () {
     this.run = run;
-    var combo = 0;
-
     function run(condition) {
         update_status();
         render(conf.level.current, conf.size.current);
@@ -171,18 +170,18 @@ var stage = new function () {
     function hit(is_answer, element) {
         var effect = $('<div class="hit"/>');
         if (is_answer) {
-            combo++;
-            effect.text('+' + combo);
-            if (conf.combo <= combo) conf.combo = combo;
+            conf.combo.current++;
+            effect.text('+' + conf.combo.current);
+            if (conf.combo.max <= conf.combo.current) conf.combo.max = conf.combo.current;
         } else {
-            combo = 0;
+            conf.combo.current = 0;
             effect.text('땡')
                 .addClass('wrong');
         }
         var position = element.position();
         effect.css({
             left: (position.left) + 'px',
-            top: (position.top - 10) + 'px',
+            top: (position.top - 12) + 'px',
             width: element.width() + 'px',
             lineHeight: element.height() + 'px'
         });
@@ -252,7 +251,7 @@ var timer = new function () {
 };
 
 function get_share_desc() {
-    return conf.score + '점(연속+' + conf.combo + ') 획득! 당신은 ' + get_title(conf.score) + '!!'
+    return conf.score + '점(연속+' + conf.combo.max + ') 획득! 당신은 ' + get_title(conf.score) + '!!'
 }
 
 $('#kakaostory-share').on('click', executeKakaoStoryLink);
