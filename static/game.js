@@ -181,7 +181,6 @@ var stage = new function () {
             effect.text('땡')
                 .addClass('wrong');
         }
-        var position = element.position();
         effect.css({
             width: element.width() + 'px',
             lineHeight: element.height() + 'px'
