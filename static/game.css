@@ -9,7 +9,7 @@ body {
 }
 .container {
   margin: 0 auto;
-  max-width: 501px;
+  max-width: 601px;
   min-width: 320px;
   background: #f5f5f5;
 }
@@ -103,7 +103,7 @@ div#tiles {
   margin: 0px auto 0 auto;
   padding: 5px 0 0 5px;
   overflow: hidden;
-  max-width: 496px;
+  max-width: 596px;
   min-width: 315px;
 }
 #ad {
@@ -148,7 +148,7 @@ div#tiles {
   padding: 0;
   display: block;
   font-size: 1em;
-  height: 3em;
+  height: 2em;
   width: 140px;
   margin: 10px auto 10px auto;
   background: #e65100;
@@ -173,4 +173,14 @@ div#tiles {
   font-weight: 700;
   text-align: center;
   letter-spacing: -1px;
+}
+div.hit {
+  position: absolute;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0px 0px 3px #212121;
+}
+div.hit.wrong {
+  color: red;
+  text-shadow: 0px 0px 3px #212121;
 }

@@ -13,12 +13,13 @@ $('header, #tiles *').attr('unselectable', 'on')
     });
 
 var conf = {
-    level: {start: 1, end: 50, current: 1},
-    size: {start: 3, end: 8, current: 3},
+    level: {start: 1, end: 55, current: 0},
+    size: {start: 2, end: 8, current: 0},
     tiles: {selector: '#tiles', width: 320, margin: 5, content: undefined},
-    gap: {min: 5, current: 50},
+    gap: {min: 10, current: 0},
     time: {max: 60, current: 0},
     score: 0,
+    combo: 0,
     debug: false,
     title: [
         [0, "색감 도전자"],
@@ -46,6 +47,7 @@ function init() {
     conf.tiles.width = conf.tiles.content.width();
     conf.tiles.content.css('height', conf.tiles.width + 'px');
     conf.level.current = conf.level.start;
+    conf.combo = 0;
     conf.size.current = conf.size.start;
     conf.gap.current = conf.level.end;
     conf.time.current = conf.time.max;
@@ -72,6 +74,7 @@ function update_status() {
         max: conf.time.max
     });
     $('span.title').text(get_title(conf.score));
+    $('span.combo').text(conf.combo);
 }
 
 // global functions
@@ -143,6 +146,8 @@ function render(level, size) {
 
 var stage = new function () {
     this.run = run;
+    var combo = 0;
+
     function run(condition) {
         update_status();
         render(conf.level.current, conf.size.current);
@@ -151,18 +156,46 @@ var stage = new function () {
         conf.size.current >= conf.size.end ? conf.size.current = conf.size.end : conf.size.current++;
     }
 
-    function right() {
+    function right(element) {
         conf.score++;
         run();
         log('right!');
+        new hit(true, element);
     }
 
-    function wrong() {
+    function wrong(element) {
         log('wrong!');
+        new hit(false, element);
     }
 
-    this.tile_click = function () {
-        $(this).hasClass('answer') ? right() : wrong();
+    function hit(is_answer, element) {
+        var effect = $('<div class="hit"/>');
+        if (is_answer) {
+            combo++;
+            effect.text('+' + combo);
+            if (conf.combo <= combo) conf.combo = combo;
+        } else {
+            combo = 0;
+            effect.text('땡')
+                .addClass('wrong');
+        }
+        var position = element.position();
+        effect.css({
+            left: (position.left) + 'px',
+            top: (position.top - 10) + 'px',
+            width: element.width() + 'px',
+            lineHeight: element.height() + 'px'
+        });
+        $('#map').append(effect);
+        effect.fadeOut(500, function () {
+            $(this).remove();
+        });
+    }
+
+    this.tile_click = function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(this).hasClass('answer') ? right($(this)) : wrong($(this));
         log('score : ' + conf.score);
     }
 };
@@ -191,7 +224,7 @@ var game = new function () {
         $('#end').show();
     };
     this.reset = reset;
-    $('#tiles').on('click touchstart', 'div.tile', stage.tile_click);
+    $('#tiles').on('touchstart click', 'div.tile', stage.tile_click);
 };
 
 $('div.panel').on('click', 'button.start', game.start);
@@ -219,7 +252,7 @@ var timer = new function () {
 };
 
 function get_share_desc() {
-    return conf.score + '점 획득! 당신은 ' + get_title(conf.score) + '!!'
+    return conf.score + '점(연속+' + conf.combo + ') 획득! 당신은 ' + get_title(conf.score) + '!!'
 }
 
 $('#kakaostory-share').on('click', executeKakaoStoryLink);
@@ -239,3 +272,4 @@ function executeKakaoStoryLink() {
             type: "website"})
     });
 }
+
