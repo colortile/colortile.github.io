@@ -155,7 +155,7 @@ var stage = new function () {
         render(conf.level.current, conf.size.current);
         if (condition === 'hold') return false;
         conf.level.current++;
-        conf.size.current >= conf.size.end ? conf.size.current = conf.size.end : conf.size.current++;
+        conf.size.current = Math.min(conf.size.end, ++conf.size.current);
     }
 
     function right(element) {
@@ -175,13 +175,12 @@ var stage = new function () {
         if (is_answer) {
             conf.combo.current++;
             effect.text('+' + conf.combo.current);
-            if (conf.combo.max <= conf.combo.current) conf.combo.max = conf.combo.current;
+            conf.combo.max = Math.max(conf.combo.current, conf.combo.max);
         } else {
             conf.combo.current = 0;
             effect.text('땡')
                 .addClass('wrong');
         }
-        var position = element.position();
         effect.css({
             width: element.width() + 'px',
             lineHeight: element.height() + 'px'
