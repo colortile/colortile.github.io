@@ -155,7 +155,7 @@ var stage = new function () {
         render(conf.level.current, conf.size.current);
         if (condition === 'hold') return false;
         conf.level.current++;
-        conf.size.current >= conf.size.end ? conf.size.current = conf.size.end : conf.size.current++;
+        conf.size.current = Math.min(conf.size.end, ++conf.size.current);
     }
 
     function right(element) {
