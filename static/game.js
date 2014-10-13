@@ -175,7 +175,7 @@ var stage = new function () {
         if (is_answer) {
             conf.combo.current++;
             effect.text('+' + conf.combo.current);
-            if (conf.combo.max <= conf.combo.current) conf.combo.max = conf.combo.current;
+            conf.combo.max = Math.max(conf.combo.current, conf.combo.max);
         } else {
             conf.combo.current = 0;
             effect.text('땡')
