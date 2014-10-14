@@ -57,7 +57,7 @@ function init() {
     conf.combo.current = 0;
     conf.score = 0;
 
-    $('div.panel').css({height: conf.tiles.width + 'px', width: conf.tiles.width + 'px'});
+    $('div.panel').css({height: conf.tiles.width - 5 + 'px', width: conf.tiles.width - 5 + 'px'});
     update_status();
 }
 
