@@ -1,7 +1,8 @@
 FastClick.attach(document.body);
 
 $('header, #tiles *').attr('unselectable', 'on')
-    .css({'-moz-user-select': '-moz-none',
+    .css({
+        '-moz-user-select': '-moz-none',
         '-moz-user-select': 'none',
         '-o-user-select': 'none',
         '-khtml-user-select': 'none',
@@ -251,7 +252,7 @@ var timer = new function () {
 };
 
 function get_share_desc() {
-    return conf.score + '점(연속+' + conf.combo.max + ') 획득! 당신은 ' + get_title(conf.score) + '!!'
+    return conf.score + '점(연속+' + conf.combo.max + ') 획득! 당신은 ' + get_title(conf.score) + '!!';
 }
 
 $('#kakaostory-share').on('click', executeKakaoStoryLink);
@@ -260,7 +261,7 @@ function executeKakaoStoryLink() {
     var meta_desc = $('meta[name="description"]').attr('content');
     var meta_title = $('meta[name="title"]').attr('content');
     kakao.link("story").send({
-        post: "틀린 타일 찾기! " + get_share_desc() + " - http://colortile.github.io/",
+        post: "틀린 타일 찾기! " + get_share_desc() + " - http://colortile.github.io/ #틀린타일찾기 #색감테스트",
         appid: "colortile.github.io",
         appver: "1.0",
         appname: meta_title,
@@ -268,7 +269,7 @@ function executeKakaoStoryLink() {
             title: meta_title,
             desc: meta_desc,
             imageurl: ["http://colortile.github.io/static/images/apple-touch-icon-144x144.png"],
-            type: "website"})
+            type: "website"
+        })
     });
 }
-
